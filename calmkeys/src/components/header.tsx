@@ -1,4 +1,4 @@
-import {Info} from "lucide-react";
+import { BsFillInfoCircleFill } from "react-icons/bs";
 
 const Header = () => {
     return (
@@ -9,7 +9,7 @@ const Header = () => {
                 </a>
                 <div className="flex">
                     <a href="/about" className="mr-4 flex">
-                        <Info className="w-6 h-6" /> 
+                        <BsFillInfoCircleFill className="w-6 h-6" /> 
                     </a>
                 </div>
             </nav>    
