@@ -1,12 +1,18 @@
-import React from "react";
+import Header from '../components/header';
+import Footer from '../components/footer';
 
 const Home = () => {
     return (
-        <main className="bg-[#fff9f0] min-h-screen p-12">
-            <section className="container mx-auto">
-                <h1 className="text-5xl text-black flex justify-left cursive">CalmKeys</h1>
-            </section>
-        </main>
+        <div className='flex flex-col min-h-screen'>
+            <Header/>
+            <main className="bg-[#fff9f0] min-h-screen p-12">
+                <section className="container mx-auto">
+                    <h1 className="text-2xl text-black flex justify-center cursive">home</h1>
+                </section>
+            </main>
+
+            <Footer/>
+        </div>
     )
 }
 
