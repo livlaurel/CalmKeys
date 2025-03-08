@@ -10,7 +10,7 @@ const Home = () => {
             <Header/>
             <main className="bg-[#fff9f0] flex-grow p-7">
                 <section className="container mx-auto">
-                    <div className="box box-content rounded-sm text-base p-4 h-110 bg-[#a9b8a0]">
+                    <div className="box box-content rounded-sm text-base p-4 h-110 bg-[#9caf88]">
                         <div className=" box box-content flex justify-between rounded-sm items-center p-4 bg-[#fff9f0]"> 
                             <button className="flex items-center mr-2"> <RiPlantFill /> Zen </button>
                             <button className="flex items-center mr-2"> <FaQuoteLeft /> Quote</button>
