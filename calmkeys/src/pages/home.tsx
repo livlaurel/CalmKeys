@@ -1,6 +1,5 @@
 import Header from '../components/header';
 import Footer from '../components/footer';
-import TypingGame from '../components/typing';
 
 const Home = () => {
     return (
@@ -10,8 +9,6 @@ const Home = () => {
                 <section className="container mx-auto">
                     <h1 className="text-2xl text-black flex justify-center cursive">home</h1>
                 </section>
-
-                <TypingGame/>
             </main>
 
             <Footer/>
