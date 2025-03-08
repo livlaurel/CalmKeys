@@ -16,7 +16,7 @@ const Footer = () => {
                     <FaLinkedin className="w-6 h-6"/>
                 </a>    
             </div>
-            <div className="flex justify-center">
+            <div className="flex justify-center mb-2">
                 <a href="https://www.olaurel.dev/" className="text-sm font-bold underline font-mono">Created By:@livlaurel</a> 
             </div>     
         </main>
