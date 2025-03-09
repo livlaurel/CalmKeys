@@ -7,7 +7,7 @@ const About = () => {
         <Header/>
         <main className="bg-[#fff9f0] flex-grow p-12">
             <section className="container font-mono mx-auto">
-                <div className="box box-content rounded-t-sm text-2xl font-bold border-3 p-4 bg-[#fff9f0]">
+                <div className="box box-content rounded-t-sm text-2xl font-bold border-2 p-4 bg-[#fff9f0]">
                     About CalmKeys:
                 </div>
                 <div className="box box-content rounded-b-sm text-base p-4 h-90 bg-[#9caf88]">

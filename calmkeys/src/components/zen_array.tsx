@@ -8,6 +8,7 @@ export const ZEN_WORDS = [
     "deep", "vast", "open", "fresh", "pure", "trust", "freedom", "connection", "wholeness", "being",
     "now", "simplicity", "essence", "surrender", "renew", "rest", "pause", "zenith", "glow", "starlight",
     "rain", "dewdrop", "butterfly", "blossom", "wave", "echo", "horizon", "meditation", "sacred", "unity",
-    "peaceful", "serenity", "gentle rain", "soft wind", "murmur", "whispering", "tranquility", "lightness", "breath", "calming"
+    "peaceful", "serenity", "murmur", "whispering", "tranquility", "lightness", "breath", "calming","cozy", "comfort", "kensho", 
+    "satori", "mindful", "mind", "ukiyo", "kaizen", "illumoria", "veilon"
   ];
   
