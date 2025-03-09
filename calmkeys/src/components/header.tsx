@@ -8,7 +8,7 @@ const Header = () => {
                     <img src="/imgs/calmkeys.png" alt="Calm Keys Logo" className="w-48 h-20" />
                 </a>
                 <div className="flex">
-                    <a href="/about" className="mr-4 flex">
+                    <a href="/CalmKeys/about" className="mr-4 flex">
                         <BsFillInfoCircleFill className="w-6 h-6" /> 
                     </a>
                 </div>
