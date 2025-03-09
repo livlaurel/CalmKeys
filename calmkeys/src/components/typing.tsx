@@ -1,5 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import { RANDOM_WORDS } from "./words_array";
+import { ZEN_WORDS } from "./zen_array";
+import { RiPlantFill, RiLetterSpacing2 } from "react-icons/ri";
+import { FaQuoteLeft } from "react-icons/fa";
 
 const TypingTest: React.FC = () => {
   const [words, setWords] = useState<string[]>([]);
@@ -10,18 +13,21 @@ const TypingTest: React.FC = () => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    fetchWords(10);
+    loadWords(RANDOM_WORDS, 10);
     if (inputRef.current) {
       inputRef.current.focus();
     }
   }, []);
 
-  const fetchWords = (count: number) => {
-    let newWords: string[] = [];
-    for (let i = 0; i < count; i++) {
-      newWords.push(RANDOM_WORDS[Math.floor(Math.random() * RANDOM_WORDS.length)]);
-    }
-    setWords((prevWords) => [...prevWords, ...newWords]);
+  const loadWords = (wordList: string[], count: number) => {
+    const newWords = Array.from({ length: count }, () =>
+      wordList[Math.floor(Math.random() * wordList.length)]
+    );
+    setWords(newWords);
+    setCurrentIndex(0);
+    setCorrectCount(0);
+    setStartTime(null);
+    setInput("");
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -37,7 +43,7 @@ const TypingTest: React.FC = () => {
       setInput("");
       setCurrentIndex(currentIndex + 1);
       if (currentIndex + 1 >= words.length - 5) {
-        fetchWords(5);
+        loadWords(words, 5);
       }
     }
     if (!startTime) {
@@ -53,32 +59,38 @@ const TypingTest: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-95 bg-[#fff9f0] text-black p-5">
-      <h1 className="text-3xl font-bold mb-4">Calm Keys</h1>
-      <h2 className="text-lg mb-6">WPM: {calculateWPM()}</h2>
-      <div className="text-xl flex flex-wrap max-w-3xl gap-2">
-        {words.slice(currentIndex, currentIndex + 10).map((word, index) => (
-          <span
-            key={index}
-            className={
-              index === 0
-                ? "text-yellow-400 underline"
-                : "text-gray-400"
-            }
-          >
-            {word}
-          </span>
-        ))}
-      </div>
-      <input
-        ref={inputRef}
-        type="text"
-        value={input}
-        onChange={handleInputChange}
-        onKeyDown={handleKeyDown}
-        className="mt-6 p-3 w-full max-w-3xl text-lg border-b-2 rounded-sm border-yellow-400 focus:outline-none"
-      />
+    <> <div className="box box-content flex justify-between rounded-sm items-center p-4 bg-[#fff9f0] mb-4">
+        <button className="flex items-center mr-10" onClick={() => loadWords(ZEN_WORDS, 10)}>
+          <RiPlantFill className="mr-1" /> Zen
+        </button>
+        <button className="flex items-center mr-10 ml-10">
+          <FaQuoteLeft className="mr-1" /> Quote
+        </button>
+        <button className="flex items-center ml-10" onClick={() => loadWords(RANDOM_WORDS, 10)}>
+          <RiLetterSpacing2 className="mr-1" /> Words
+        </button>
     </div>
+    
+    <div className="flex flex-col items-center justify-center rounded-sm h-93 bg-[#fff9f0] text-black p-5">
+        <h1 className="text-3xl font-bold mb-4">Calm Keys</h1>
+        <h2 className="text-lg mb-6">WPM: {calculateWPM()}</h2>
+
+        <div className="text-xl flex flex-wrap max-w-3xl gap-2">
+          {words.slice(currentIndex, currentIndex + 10).map((word, index) => (
+            <span key={index} className={index === 0 ? "text-yellow-400 underline" : "text-gray-400"}>
+              {word}
+            </span>
+          ))}
+        </div>
+
+        <input
+          ref={inputRef}
+          type="text"
+          value={input}
+          onChange={handleInputChange}
+          onKeyDown={handleKeyDown}
+          className="mt-6 p-3 w-full max-w-3xl text-lg border-b-2 rounded-sm border-yellow-400 focus:outline-none" />
+      </div></>
   );
 };
 
