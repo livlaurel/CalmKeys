@@ -1,5 +1,6 @@
 import Header from "../components/header";
 import Footer from "../components/footer";
+import pfp from "../imgs/pfp.png";
 
 const About = () => {
     return (
@@ -14,7 +15,7 @@ const About = () => {
                     <p className="pb-7">CalmKeys is an endless typing game designed to help you practice your typing skills at your own pace. With no time limits or pressure to type quickly, CalmKeys allows you to focus on the rhythm and accuracy of your typing. Grab a cup of tea, get comfortable, and let CalmKeys guide you to a more mindful approach to typing.</p>
                     <p>Thank you for playing CalmKeys!</p>
                     <p>Feedback is always welcome!</p>
-                    <img src="./imgs/pfp.png" alt="profile" className="ml-auto mr-5 w-50 h-55"/>
+                    <img src={pfp} alt="profile" className="ml-auto mr-5 w-50 h-55"/>
                 </div>
             </section>
         </main>
