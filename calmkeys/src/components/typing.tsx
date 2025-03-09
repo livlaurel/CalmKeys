@@ -52,19 +52,27 @@ const TypingTest: React.FC = () => {
       e.preventDefault();
 
       if (input.trim() === words[currentIndex]) {
-        setCorrectCount(correctCount + 1);  
-        setInput(""); 
-      }
+        setCorrectCount(correctCount + 1);
+        setInput("");
 
-      if (input.trim() === words[currentIndex]) {
         setCurrentIndex((prevIndex) => {
           const nextIndex = prevIndex + 1;
 
-          if (mode === "quote" && nextIndex >= words.length) {
-            loadQuote();
-            return 0;
+          // Add new words when you're near the end
+          if (nextIndex >= words.length - 3) {
+            const newWords = Array.from({ length: 7 }, () =>
+              mode === "zen"
+                ? ZEN_WORDS[Math.floor(Math.random() * ZEN_WORDS.length)]
+                : RANDOM_WORDS[Math.floor(Math.random() * RANDOM_WORDS.length)]
+            );
+            setWords((prevWords) => [...prevWords, ...newWords]);
           }
-  
+
+          if (mode === "quote" && nextIndex >= words.length) {
+            loadQuote(); 
+            return 0; 
+          }
+
           return nextIndex;
         });
       }
@@ -74,7 +82,6 @@ const TypingTest: React.FC = () => {
       setStartTime(new Date());
     }
   };
-  
 
   const calculateWPM = () => {
     if (!startTime) return 0;
@@ -86,23 +93,29 @@ const TypingTest: React.FC = () => {
   return (
     <>
       <div className="box box-content flex justify-between rounded-sm items-center p-4 bg-[#fff9f0] mb-4">
-        <button className="flex items-center mr-10" onClick={() => {
+        <button
+          className="flex items-center mr-10"
+          onClick={() => {
             setMode("zen");
             loadWords(ZEN_WORDS, 10);
           }}
         >
           <RiPlantFill className="mr-1" /> Zen
         </button>
-        
-        <button className="flex items-center mr-10 ml-10" onClick={() => {
+
+        <button
+          className="flex items-center mr-10 ml-10"
+          onClick={() => {
             setMode("quote");
-            loadQuote();
+            loadQuote(); // Load the first quote
           }}
         >
           <FaQuoteLeft className="mr-1" /> Quote
         </button>
 
-        <button className="flex items-center ml-10" onClick={() => {
+        <button
+          className="flex items-center ml-10"
+          onClick={() => {
             setMode("words");
             loadWords(RANDOM_WORDS, 10);
           }}
@@ -116,23 +129,26 @@ const TypingTest: React.FC = () => {
         <h2 className="text-lg mb-6">WPM: {calculateWPM()}</h2>
 
         <div className="text-xl flex flex-wrap max-w-3xl gap-2">
-          {words.map((word, index) => (
-            <span
-              key={index}
-              className={
-                index < currentIndex
-                  ? "text-gray-400"
-                  : index === currentIndex
-                  ? "text-yellow-400 underline"
-                  : "text-gray-600" 
-              }
-            >
-              {word}
-            </span>
-          ))}
+          {(mode === "quote" ? (quote?.split(" ") || []) : words).map(
+            (word, index) => (
+              <span
+                key={index}
+                className={
+                  index < currentIndex
+                    ? "text-gray-400"
+                    : index === currentIndex
+                    ? "text-yellow-400 underline"
+                    : "text-gray-600"
+                }
+              >
+                {word}
+              </span>
+            )
+          )}
         </div>
 
-        <input className="mt-6 p-3 w-full max-w-3xl text-lg border-b-2 rounded-sm border-yellow-400 focus:outline-none"
+        <input
+          className="mt-6 p-3 w-full max-w-3xl text-lg border-b-2 rounded-sm border-yellow-400 focus:outline-none"
           ref={inputRef}
           type="text"
           value={input}
