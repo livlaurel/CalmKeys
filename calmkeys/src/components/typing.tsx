@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-const API_KEY = import.meta.env.VITE_API_KEY;
-const API_URL = "https://api.api-ninjas.com/v1/randomword";
+import { RANDOM_WORDS } from "./words_array";
 
 const TypingTest: React.FC = () => {
   const [words, setWords] = useState<string[]>([]);
@@ -17,19 +16,10 @@ const TypingTest: React.FC = () => {
     }
   }, []);
 
-  const fetchWords = async (count: number) => {
+  const fetchWords = (count: number) => {
     let newWords: string[] = [];
     for (let i = 0; i < count; i++) {
-      try {
-        const response = await fetch(API_URL, {
-          headers: { "X-Api-Key": API_KEY },
-        });
-        const data = await response.json();
-        if (data.word) newWords.push(data.word);
-      } catch (error) {
-        console.error("Error fetching words", error);
-        newWords.push("error");
-      }
+      newWords.push(RANDOM_WORDS[Math.floor(Math.random() * RANDOM_WORDS.length)]);
     }
     setWords((prevWords) => [...prevWords, ...newWords]);
   };
