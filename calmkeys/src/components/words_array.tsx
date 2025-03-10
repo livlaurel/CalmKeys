@@ -43,7 +43,7 @@ export const RANDOM_WORDS = [
     "children", "kid", "teen", "adult", "parent", "family", "relative", "ancestor", "descendant", "generation", "lineage",
     "friend", "bestie", "buddy", "pal", "mate", "comrade", "chum", "partner", "ally", "confidant", "mentor", "teacher",
     "student", "classmate", "roommate", "neighbor", "colleague", "coworker", "boss", "employee", "client", "customer", "patient",
-    "doctor", "nurse", "therapist", "counselor", "psychologist", "psychiatrist", "social worker", "case manager", "advocate", "activist", "organizer",
+    "doctor", "nurse", "therapist", "counselor", "psychologist", "psychiatrist", "advocate", "activist", "organizer",
     "leader", "follower", "member", "volunteer", "donor", "sponsor", "supporter", "ally", "partner", "community", "society", "organization",
     "group", "team", "club", "association", "union", "coalition", "alliance", "network", "system", "structure", "process", "procedure",
     "protocol", "policy", "practice", "program", "plan", "project", "goal", "desktop", "router", "switch", "hub", "server",
